@@ -45,6 +45,9 @@ public class WasteService {
 
     /** Creates a new waste record using WasteBuilder validation and enqueues it for collection. */
     public Waste create(Waste waste) {
+        if (waste == null) {
+            throw new IllegalArgumentException("Waste cannot be null");
+        }
         Waste validated = new WasteBuilder()
             .withType(waste.getType())
             .withWeight(waste.getWeightKg())
@@ -52,7 +55,6 @@ public class WasteService {
             .withDate(waste.getGenerationDate())
             .withStatus(waste.getStatus())
             .build();
-        if (validated == null) throw new IllegalArgumentException("Waste cannot be null");
         Waste saved = wasteRepository.save(validated);
         collectionQueue.enqueue(saved);
         weightTree.insert(saved.getWeightKg());
@@ -77,7 +79,6 @@ public class WasteService {
 
     /** Deletes a waste record by id. */
     public void delete(String id) {
-        if (id == null) throw new IllegalArgumentException("Waste id cannot be null");
         getById(id);
         wasteRepository.deleteById(id);
     }
@@ -106,7 +107,6 @@ public class WasteService {
                     new TraceabilityDecorator(
                         new BaseWasteProcessor())));
         processor.process(waste);
-        if (waste == null) throw new IllegalArgumentException("Waste cannot be null");
         return wasteRepository.save(waste);
     }
 
@@ -114,7 +114,6 @@ public class WasteService {
     public Waste cloneWaste(String id) {
         Waste original = getById(id);
         Waste clone = new WastePrototype(original).cloneWithNewDate();
-        if (clone == null) throw new IllegalArgumentException("Waste cannot be null");
         return wasteRepository.save(clone);
     }
 
