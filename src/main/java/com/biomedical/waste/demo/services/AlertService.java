@@ -19,6 +19,9 @@ public class AlertService {
 
     /** Generates an alert for a waste item based on its risk level and sends notifications. */
     public Alert generateAlert(Waste waste) {
+        if (waste == null) {
+            throw new IllegalArgumentException("Waste cannot be null");
+        }
         AlertLevel level = determineLevel(waste);
         Alert alert = Alert.builder()
             .message("Risk detected for waste " + waste.getId()
@@ -30,7 +33,6 @@ public class AlertService {
             .resolved(false)
             .build();
 
-        if (alert == null) throw new IllegalArgumentException("Alert cannot be null");
         NotificationFactory factory = NotificationFactory.forLevel(level);
         factory.createSystemAlert().log("Alert generated for waste " + waste.getId(), level);
         if (level == AlertLevel.HIGH) {
@@ -65,14 +67,19 @@ public class AlertService {
 
     /** Returns the number of alerts for the given severity level. */
     public long countByLevel(AlertLevel level) {
+        if (level == null) {
+            throw new IllegalArgumentException("Alert level cannot be null");
+        }
         return alertRepository.countByLevel(level);
     }
 
     private AlertLevel determineLevel(Waste waste) {
+        if (waste == null || waste.getType() == null) {
+            throw new IllegalArgumentException("Waste type is required to determine alert level");
+        }
         int risk = waste.getType().getRiskLevel();
         if (risk >= 4) return AlertLevel.HIGH;
         if (risk == 3) return AlertLevel.MEDIUM;
         return AlertLevel.LOW;
     }
 }
-
