@@ -17,7 +17,10 @@ public class AlertService {
     private final AlertRepository alertRepository;
     private final AlertStack<Alert> alertStack = new AlertStack<>();
 
-    /** Generates an alert for a waste item based on its risk level and sends notifications. */
+    /**
+     * Generates an alert for a waste item based on its risk level and sends notifications.
+     * HIGH risk alerts also trigger an email notification to the admin address.
+     */
     public Alert generateAlert(Waste waste) {
         if (waste == null) {
             throw new IllegalArgumentException("Waste cannot be null");
@@ -48,7 +51,10 @@ public class AlertService {
         return saved;
     }
 
-    /** Resolves the most recent unresolved alert by popping it from the history stack. */
+    /**
+     * Resolves the most recent unresolved alert by popping it from the history stack.
+     * Persists the resolved state back to the database.
+     */
     public Alert resolveLatest() {
         Alert alert = alertStack.pop();
         alert.resolveAlert();
