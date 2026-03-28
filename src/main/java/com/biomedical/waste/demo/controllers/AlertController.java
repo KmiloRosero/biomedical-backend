@@ -25,7 +25,10 @@ public class AlertController {
     private final AlertService alertService;
     private final WasteService wasteService;
 
-    /** Returns all currently active (unresolved) alerts. */
+    /**
+     * Returns all currently active (unresolved) alerts.
+     * Queries the repository filtering by resolved = false.
+     */
     @GetMapping
     public ResponseEntity<List<Alert>> getActive() {
         return ResponseEntity.ok(alertService.getActive());

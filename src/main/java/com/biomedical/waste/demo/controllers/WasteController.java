@@ -24,7 +24,10 @@ public class WasteController {
 
     private final WasteService wasteService;
 
-    /** Returns all registered waste items. */
+    /**
+     * Returns all registered waste items.
+     * Delegates to the service layer and wraps the result in a 200 OK response.
+     */
     @GetMapping
     public ResponseEntity<List<Waste>> getAll() {
         return ResponseEntity.ok(wasteService.getAll());
@@ -36,7 +39,10 @@ public class WasteController {
         return ResponseEntity.ok(wasteService.getById(id));
     }
 
-    /** Creates a new waste record with full validation. */
+    /**
+     * Creates a new waste record with full validation.
+     * The request body is validated through the WasteBuilder before persisting.
+     */
     @PostMapping
     public ResponseEntity<Waste> create(@RequestBody Waste waste) {
         return ResponseEntity.ok(wasteService.create(waste));

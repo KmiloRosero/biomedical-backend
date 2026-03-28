@@ -35,7 +35,10 @@ public class RouteController {
         return ResponseEntity.ok(routeService.createRoute(route));
     }
 
-    /** Returns the optimal route between two collection points using Dijkstra. */
+    /**
+     * Returns the optimal route between two collection points using Dijkstra.
+     * Both 'from' and 'to' must be valid nodes in the route graph.
+     */
     @GetMapping("/optimal")
     public ResponseEntity<RouteGraph.PathResult> getOptimalRoute(@RequestParam String from, @RequestParam String to) {
         return ResponseEntity.ok(routeService.getOptimalRoute(from, to));
