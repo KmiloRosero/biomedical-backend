@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ManifiestoTransporteRepository extends JpaRepository<ManifiestoTransporteRecord, Long> {
     List<ManifiestoTransporteRecord> findByEstado(String estado);
-    List<ManifiestoTransporteRecord> findByOrdenId(Long ordenId);
+    List<ManifiestoTransporteRecord> findByOrden_Id(Long ordenId);
 }
 

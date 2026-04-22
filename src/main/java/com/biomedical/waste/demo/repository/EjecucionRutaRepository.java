@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EjecucionRutaRepository extends JpaRepository<EjecucionRuta, Long> {
-    List<EjecucionRuta> findByRutaId(Long rutaId);
-    List<EjecucionRuta> findByVehiculoId(Long vehiculoId);
+    List<EjecucionRuta> findByRuta_Id(Long rutaId);
+    List<EjecucionRuta> findByVehiculo_Id(Long vehiculoId);
     List<EjecucionRuta> findByEstado(String estado);
 }
 
