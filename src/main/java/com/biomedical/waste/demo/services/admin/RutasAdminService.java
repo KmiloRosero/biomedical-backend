@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RutasAdminService extends AdminTableCrudService {
     public RutasAdminService(DataSource dataSource) {
-        super(dataSource, TableSelector.exact("rutas"));
+        super(dataSource, TableSelector.RUTAS);
     }
 }
 

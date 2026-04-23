@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class VOrdenesPendientesAdminService extends AdminTableCrudService {
     public VOrdenesPendientesAdminService(DataSource dataSource) {
-        super(dataSource, TableSelector.exact("v_ordenes_pendientes"));
+        super(dataSource, TableSelector.V_ORDENES_PENDIENTES);
     }
 }

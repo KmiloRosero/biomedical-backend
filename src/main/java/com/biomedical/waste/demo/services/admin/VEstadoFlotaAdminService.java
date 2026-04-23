@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class VEstadoFlotaAdminService extends AdminTableCrudService {
     public VEstadoFlotaAdminService(DataSource dataSource) {
-        super(dataSource, TableSelector.exact("v_estado_flota"));
+        super(dataSource, TableSelector.V_ESTADO_FLOTA);
     }
 }
 

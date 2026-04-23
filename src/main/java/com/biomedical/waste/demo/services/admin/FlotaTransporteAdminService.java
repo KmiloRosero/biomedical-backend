@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class FlotaTransporteAdminService extends AdminTableCrudService {
     public FlotaTransporteAdminService(DataSource dataSource) {
-        super(dataSource, TableSelector.exact("flota_transporte"));
+        super(dataSource, TableSelector.FLOTA_TRANSPORTE);
     }
 }
 

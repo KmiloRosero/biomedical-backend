@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class HistoricoGeneracionAdminService extends AdminTableCrudService {
     public HistoricoGeneracionAdminService(DataSource dataSource) {
-        super(dataSource, TableSelector.exact("historico_generacion"));
+        super(dataSource, TableSelector.HISTORICO_GENERACION);
     }
 }
 

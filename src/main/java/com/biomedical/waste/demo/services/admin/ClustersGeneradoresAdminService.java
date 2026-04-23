@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClustersGeneradoresAdminService extends AdminTableCrudService {
     public ClustersGeneradoresAdminService(DataSource dataSource) {
-        super(dataSource, TableSelector.exact("clusters_generadores"));
+        super(dataSource, TableSelector.CLUSTERS_GENERADORES);
     }
 }
 

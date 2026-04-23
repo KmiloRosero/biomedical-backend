@@ -43,6 +43,12 @@ public class GlobalExceptionHandler {
         return buildResponse(status, ex.getReason(), req.getRequestURI());
     }
 
+    /** Handles database integrity errors (e.g. duplicate keys, foreign key constraints) */
+    @ExceptionHandler(org.springframework.dao.DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String, Object>> handleDataIntegrity(org.springframework.dao.DataIntegrityViolationException ex, HttpServletRequest req) {
+        return buildResponse(HttpStatus.CONFLICT, "Error de integridad de datos: " + ex.getMostSpecificCause().getMessage(), req.getRequestURI());
+    }
+
     /** Handles generic errors and returns a 500 response body. */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGeneric(Exception ex, HttpServletRequest req) {

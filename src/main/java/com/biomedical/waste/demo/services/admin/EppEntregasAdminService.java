@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EppEntregasAdminService extends AdminTableCrudService {
     public EppEntregasAdminService(DataSource dataSource) {
-        super(dataSource, TableSelector.exact("epp_entregas"));
+        super(dataSource, TableSelector.EPP_ENTREGAS);
     }
 }
 

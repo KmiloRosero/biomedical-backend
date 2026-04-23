@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CatalogoTipoResiduoAdminService extends AdminTableCrudService {
     public CatalogoTipoResiduoAdminService(DataSource dataSource) {
-        super(dataSource, TableSelector.exact("catalogo_tipo_residuo"));
+        super(dataSource, TableSelector.CATALOGO_TIPO_RESIDUO);
     }
 }
 

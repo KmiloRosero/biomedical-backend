@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CapexActivosAdminService extends AdminTableCrudService {
     public CapexActivosAdminService(DataSource dataSource) {
-        super(dataSource, TableSelector.exact("capex_activos"));
+        super(dataSource, TableSelector.CAPEX_ACTIVOS);
     }
 }
 

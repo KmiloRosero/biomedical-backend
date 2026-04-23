@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TarifasMercadoAdminService extends AdminTableCrudService {
     public TarifasMercadoAdminService(DataSource dataSource) {
-        super(dataSource, TableSelector.exact("tarifas_mercado"));
+        super(dataSource, TableSelector.TARIFAS_MERCADO);
     }
 }
 

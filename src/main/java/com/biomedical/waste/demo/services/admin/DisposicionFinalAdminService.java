@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DisposicionFinalAdminService extends AdminTableCrudService {
     public DisposicionFinalAdminService(DataSource dataSource) {
-        super(dataSource, TableSelector.exact("disposicion_final"));
+        super(dataSource, TableSelector.DISPOSICION_FINAL);
     }
 }
 
